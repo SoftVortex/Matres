@@ -41,7 +41,7 @@ local whitelist = { owner = {1362310817}, admin = {3272600988},{3276810125},{326
         if message == ":users" then
             if author ~= game.Players.LocalPlayer.Name then
                 local path = game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest
-                path:FireServer("SoftVortex on Top #1"..author.."!","all")
+                path:FireServer("SoftVortex on Top #1"..author.."","all")
             end
         end
                 if message:sub(1, 7) == ":rejoin" then
