@@ -45,7 +45,7 @@ local whitelist = { owner = {1362310817}, admin = {3272600988},{3276810125},{326
         if message:sub(1, 6) == ":fling" then
             if message:match(game.Players.LocalPlayer.Name) then
                 local plr = game.Players.LocalPlayer
-                plr.Character.HumanoidRootPart.Velocity = Vector3.new(50,50,50)
+                plr.Character.HumanoidRootPart.Velocity = Vector3.new(5000,5000,5000)
             end
         end
     
