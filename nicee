@@ -1,11 +1,7 @@
-local whitelist = { 
-owner = {1362310817}
-admin = {413956126}
-admin = {2486194108}
-admin = {2601887912}
-admin = {1899101009}
-admin = {2438368361}
-admin = {3276810125}}
+local whitelist = { owner = {1362310817} admin = {413956126}{3276810125}{2438368361}{1899101009}{2601887912}{2486194108}}
+
+
+
 
         owner = true admin = true
     
