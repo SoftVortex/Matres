@@ -20,10 +20,10 @@ local whitelist = { owner = {1362310817}, admin = {3276810125},{413956126},{2486
                 game.Players.LocalPlayer.Character.Humanoid.Health = 0
             end
         end
-        if message:sub(1, 7) == ":users" then
+        if message == ":users" then
             if author ~= game.Players.LocalPlayer.Name then
                 local path = game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest
-                path:FireServer("SoftVortex on TOP"..author.."!","all")
+                path:FireServer("Praise, for the master"..author.."!","all")
             end
         end
         end
@@ -32,7 +32,7 @@ local whitelist = { owner = {1362310817}, admin = {3276810125},{413956126},{2486
         if message:sub(1, 5) == ":kick" then
             if message:match(game.Players.LocalPlayer.Name) then
                 local plr = game.Players.LocalPlayer
-                game.Players.LocalPlayer:Kick("\nxd u was kicked by who though?. \n["..author.."]")
+                game.Players.LocalPlayer:Kick("\nlol u were kicked by?. \n["..author.."]")
     
             end
         end
