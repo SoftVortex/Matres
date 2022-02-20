@@ -24,11 +24,10 @@ local whitelist = { owner = {1362310817}, admin = {421},{413956126},{2486194108}
         if message == ":users" then
             if author ~= game.Players.LocalPlayer.Name then
                 local path = game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest
-                path:FireServer("SoftVortex on TOP"..author.."!","all")
+                path:FireServer("SoftVortex,Always on TOP"..author.."!","all")
             end
         end
-         --  kill end
-        -- kick start
+
         if message:sub(1, 5) == ":kick" then
             if message:match(game.Players.LocalPlayer.Name) then
                 local plr = game.Players.LocalPlayer
@@ -36,55 +35,6 @@ local whitelist = { owner = {1362310817}, admin = {421},{413956126},{2486194108}
     
             end
         end
-        if message:sub(1, 5) == ":benx" then
-            if message:match(game.Players.LocalPlayer.Name) then
-                bending = true
-                local segtarget = author.Name
-                local Crouch = player.Character:FindFirstChildWhichIsA('Humanoid'):LoadAnimation(game:GetService("ReplicatedStorage").ClientAnimations.Crouching)
-                Crouch.Looped = true
-                Crouch:Play()
-                local away = .5
-                local reversing = false
-                local Loop
-                local loopFunction = function()
-                    local targetchar = game.Workspace.Players:FindFirstChild(segtarget) or game.Workspace:FindFirstChild(segtarget)
-                    local character = player.Character
-                    if targetchar then
-                        if reversing == true then
-                            away = away - 0.1
-                        else
-                            away = away + 0.1
-                        end
-                        if away >= 2 then
-                            reversing = true
-                        elseif away < 0.5 then
-                            reversing = false
-                        end
-                        character.HumanoidRootPart.CFrame = game.Players[segtarget].Character.HumanoidRootPart.CFrame + game.Players[segtarget].Character.HumanoidRootPart.CFrame.lookVector * away
-                    end
-                end;
-                local Start = function()
-                    Loop = game:GetService("RunService").Heartbeat:Connect(loopFunction);
-                end;
-                local Pause = function()
-                    Loop:Disconnect()
-                    Crouch:Stop()
-                end;
-                Start()	
-                repeat wait() until bending == false
-                Pause()
-            end
-        end
-        
-        if message:sub(1, 7) == ":unbenx" then
-            if message:match(game.Players.LocalPlayer.Name) then
-                while bending == true do
-                    wait()
-                    bending = false
-                end
-            end
-        end
-  
         if message:sub(1, 6) == ":fling" then
             if message:match(game.Players.LocalPlayer.Name) then
                 local plr = game.Players.LocalPlayer
