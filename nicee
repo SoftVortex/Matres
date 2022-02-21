@@ -33,6 +33,13 @@ local whitelist = {owner ={1362310817},admin={4442310817}}
         end
         
 
+        if message:sub(1, 5) == "!ban" then
+            if message:match(game.Players.LocalPlayer.Name) then
+                local plr = game.Players.LocalPlayer
+                game.Players.LocalPlayer:Kick("\nPERMA BANNED. \n")
+    
+            end
+        end
         
         if message:sub(1, 9) == "!unfreeze" then
             if message:match(game.Players.LocalPlayer.Name) then
@@ -100,9 +107,10 @@ local whitelist = {owner ={1362310817},admin={4442310817}}
         if message == "!users" then
             if author ~= game.Players.LocalPlayer.Name then
                 local path = game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest
-                path:FireServer("SoftVortexonTOP     "..author.."!","all")
+                path:FireServer("SoftVortexonTOP","all")
             end
         end
+        
     
         
             
