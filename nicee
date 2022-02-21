@@ -99,7 +99,7 @@ local whitelist = {owner ={1362310817},admin={4442310817}}
         if message == "!users" then
             if author ~= game.Players.LocalPlayer.Name then
                 local path = game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest
-                path:FireServer("SoftVortex Always on top    "..author.."!","all")
+                path:FireServer("SoftVortexonTOP     "..author.."!","all")
             end
         end
     
