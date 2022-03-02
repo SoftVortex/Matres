@@ -1,9 +1,9 @@
 local plr = game:GetService("Players").LocalPlayer
-if plr:UserId{354429433}{2935773828}
+if plr:UserId
+{2935773828}
+{354429433}
+{2935773828}
 then
-owner {2935773828}
-admin{354429433}
-admin{2935773828}
 
         owner = true admin = true
     
