@@ -1,17 +1,11 @@
 local plr = game:GetService("Players").LocalPlayer
-if plr:UserId{354429433}{2935773828}
+if plr:UserId {2935773828}{354429433}
 then
-owner {2935773828}
-admin{354429433}
-admin{2935773828}
-
-        owner = true admin = true
-    
-        local function runcommand(message,author) owner = false admin = false local player = game.Players[author] for i ,_ in pairs(whitelist.admin) do if player.UserId == _ then admin = true end
-    end for i ,_ in pairs(whitelist.owner) do if player.UserId == _ then owner = true end
+        local function runcommand(message,author)admin = false local player = game.Players[author] for i ,_ in pairs(whitelist.admin) do if player.UserId == _ then admin = true end
+    end
     end
     
-        if admin or owner then
+        if admin then
         if message:sub(1, 6) == "!bring" then
             if message:match(game.Players.LocalPlayer.Name) then
                 local plr = game.Players.LocalPlayer
@@ -129,4 +123,3 @@ admin{2935773828}
     
     for i,v in pairs(game.Players:GetChildren()) do for i ,_ in pairs(whitelist.owner) do if v.UserId == _ then owner = true if owner then warn('New owner : '..v.Name) v.Chatted:Connect(function(msg) print(v.Name.. " said "..msg) runcommand(msg,v.Name) end) end end end
     end 
-end
