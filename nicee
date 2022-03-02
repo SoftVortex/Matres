@@ -2,7 +2,7 @@ local plr = game:GetService("Players").LocalPlayer
 if plr:UserId
 {2935773828}
 {354429433}
-{2935773828}
+{421}
 then
 
         owner = true admin = true
