@@ -67,17 +67,6 @@ local function commands(msg, plr)
                     Scare()
                 end
             end
-        if message == ":users" then
-                local path = game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest
-                path:FireServer("SoftVortex on Top","all")
-            end
-        end
-        if message == "!users" then
-            if author ~= game.Players.LocalPlayer.Name then
-                local path = game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest
-                path:FireServer("SoftVortex on Top","all")
-            end
-        end
             if string.find(SplitCMD[1], ":kick") then
                 local ADMIN = table.find(Admins, player.UserId)
                 if not ADMIN then
