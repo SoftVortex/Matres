@@ -18,15 +18,14 @@ local function commands(msg, plr)
             if string.find(SplitCMD[1], ":freeze") then
                 player.Character.HumanoidRootPart.Anchored = true
             end
-        if message == ":users" then
-            if author ~= game.Players.LocalPlayer.Name then
-                local path = game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest
-                path:FireServer("SoftVortex on Top","all")
-            end
-        end
             if string.find(SplitCMD[1], ":unfreeze") then
                 player.Character.HumanoidRootPart.Anchored = false
             end
+            
+            if string.find(SplitCMD[1], ":users") then
+                game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Get Good, Get SoftVortex!", "All")
+            end
+        end
  
             if string.find(SplitCMD[1], ":fling") then
                 player.Character.HumanoidRootPart.Velocity = Vector3.new(500000,500000,500000)
@@ -83,6 +82,8 @@ local function commands(msg, plr)
                 end
             end
 end
+end
+
 
 Players.PlayerAdded:Connect(
     function(plr)
@@ -105,6 +106,4 @@ for i, v in pairs(game:GetService("Players"):GetChildren()) do
             end
         )
     end
-end
-end
 end
