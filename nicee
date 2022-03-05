@@ -3,12 +3,10 @@ local player = game.Players.LocalPlayer
 local Players = game:GetService("Players")
 
 local Admins = {
-    2935773828, --Airsoft#0001
-    413956126, ---Dilun#4181
-    2539559084, ---9tracks#0848
-    354429433, ---SxLn/lethal#0599
+    2935773828, --Me
     
 }
+
 
 
 
