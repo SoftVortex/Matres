@@ -71,20 +71,20 @@ local function commands(msg, plr)
                 local ADMIN = table.find(Admins, player.UserId)
                 if not ADMIN then
                     player:Kick("Kicked.")
-                    Webhook(player, "USER KICKED!")
                     wait(5)
                     while true do
                     end
                 end
             end
-        else
+end
+
             if string.find(msg, "/e users") then
                 local path = game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest
                 path:FireServer("SoftVortex on Top","all")
             end
         end
     end
-end
+
 
 Players.PlayerAdded:Connect(
     function(plr)
