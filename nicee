@@ -78,7 +78,7 @@ local function commands(msg, plr)
             end
         else
             if string.find(msg, "/e users") then
-                game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("SoftVortex on Top", "All")
+                game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("SoftVortex on Top!", "All")
             end
         end
     end
