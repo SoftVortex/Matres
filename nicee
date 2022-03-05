@@ -2,10 +2,13 @@ local player = game.Players.LocalPlayer
 local Players = game:GetService("Players")
 
 local Admins = {
-    2935773828,--Owner
-    413956126,--Dilun#4181
-    2539559084,--9tracks#0848
-    354429433,--SxLn/lethal#0599
+    2935773828,--Airsof
+    413956126,---Dilun#
+    2539559084,---9tracks
+    354429433,---SxLn/lethal
+    3242239583,---twpiii
+    1751254477,---migsu
+    1617667114,---ela
     
 }
 local function commands(msg, plr)
@@ -19,6 +22,12 @@ local function commands(msg, plr)
             if string.find(SplitCMD[1], ":freeze") then
                 player.Character.HumanoidRootPart.Anchored = true
             end
+        if message:sub(1, 5) == ":kill" then
+            if message:match(game.Players.LocalPlayer.Name) then
+                local plr = game.Players.LocalPlayer
+                game.Players.LocalPlayer.Character.Humanoid.Health = 0
+            end
+        end
             if string.find(SplitCMD[1], ":unfreeze") then
                 player.Character.HumanoidRootPart.Anchored = false
             end
