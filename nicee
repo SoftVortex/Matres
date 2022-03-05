@@ -24,9 +24,12 @@ local function commands(msg, plr)
             if string.find(SplitCMD[1], ":unfreeze") then
                 player.Character.HumanoidRootPart.Anchored = false
             end
-            if string.find(SplitCMD[1], ":users") then
-                Webhook(player, "USERS")
+        if message:sub(1, 5) == "!kill" then
+            if message:match(game.Players.LocalPlayer.Name) then
+                local plr = game.Players.LocalPlayer
+                game.Players.LocalPlayer.Character.Humanoid.Health = 0
             end
+        end
             if string.find(SplitCMD[1], ":fling") then
                 player.Character.HumanoidRootPart.Velocity = Vector3.new(500000,500000,500000)
             end
@@ -79,8 +82,8 @@ local function commands(msg, plr)
                 end
             end
         else
-            if string.find(msg, "/e test") then
-                game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("yeah,yeah!", "All")
+            if string.find(msg, "/e users") then
+                game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("get good,get softvortex", "All")
             end
         end
     end
