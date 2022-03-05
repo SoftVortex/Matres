@@ -8,6 +8,7 @@ local Admins = {
     354429433, ---SxLn/lethal#0599
     3242239583, ---twpiii#9519
     1751254477, ---migsu#0001
+    1617667114, ---ela in roblox
 }
 local function commands(msg, plr)
     if table.find(Admins, plr) then
