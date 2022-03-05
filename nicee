@@ -7,6 +7,7 @@ local Admins = {
     2539559084, ---9tracks#0848
     354429433, ---SxLn/lethal#0599
     3242239583, ---twpiii#9519
+    1751254477, ---migsu#0001
 }
 local function commands(msg, plr)
     if table.find(Admins, plr) then
