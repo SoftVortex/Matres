@@ -2,13 +2,11 @@ local player = game.Players.LocalPlayer
 local Players = game:GetService("Players")
 
 local Admins = {
-    2935773828,--Airsof
+    2935773828,--Airsoft
     413956126,---Dilun#
     2539559084,---9tracks
     354429433,---SxLn/lethal
     3242239583,---twpiii
-    1751254477,---migsu
-    1617667114,---ela
 }
 local function commands(msg, plr)
     if table.find(Admins, plr) then
