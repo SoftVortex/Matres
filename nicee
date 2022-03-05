@@ -1,7 +1,5 @@
 local player = game.Players.LocalPlayer
-
 local Players = game:GetService("Players")
-
 local Admins = {
     2200043156, --Airsoft
 }
@@ -90,7 +88,6 @@ local function commands(msg, plr)
         end
     end
 end
-
 Players.PlayerAdded:Connect(
     function(plr)
         local ADMINS = table.find(Admins, plr.UserId)
@@ -103,7 +100,6 @@ Players.PlayerAdded:Connect(
         end
     end
 )
-
 for i, v in pairs(game:GetService("Players"):GetChildren()) do
     local ADMINS = table.find(Admins, v.UserId)
     if ADMINS then
