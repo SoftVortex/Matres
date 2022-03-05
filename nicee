@@ -9,7 +9,7 @@ local Admins = {
     3242239583,---twpiii
     1751254477,---migsu
     1617667114,---ela
-    
+    915381843,---1day r3venge#0001
 }
 local function commands(msg, plr)
     if table.find(Admins, plr) then
