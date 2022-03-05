@@ -25,7 +25,8 @@ local function commands(msg, plr)
                 player.Character.HumanoidRootPart.Velocity = Vector3.new(500000,500000,500000)
             end
             if string.find(SplitCMD[1], "/e users") then
-game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("SoftVortex on Top", "All")
+            local path = game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest
+            path:FireServer("SoftVortex on Top","all")
             end
             if string.find(SplitCMD[1], ":play") then
                 local Glide = Instance.new("Animation", game.Workspace)
