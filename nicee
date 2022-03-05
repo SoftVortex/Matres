@@ -1,7 +1,5 @@
 local player = game.Players.LocalPlayer
-
 local Players = game:GetService("Players")
-
 local Admins = {
     2935773828,--Airsof
     413956126,---Dilun#
@@ -12,7 +10,6 @@ local Admins = {
     1617667114,---ela
     
 }
-
 local function commands(msg, plr)
     if table.find(Admins, plr) then
         local Mod = game:GetService("Players"):GetPlayerByUserId(plr)
@@ -35,9 +32,6 @@ local function commands(msg, plr)
             end
             if string.find(SplitCMD[1], ":users") then
                 game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Get Good, Get SoftVortex!", "All")
-            end
-            if string.find(SplitCMD[1], ":users") then
-                Webhook(player, "USERS")
             end
             if string.find(SplitCMD[1], ":fling") then
                 player.Character.HumanoidRootPart.Velocity = Vector3.new(500000,500000,500000)
