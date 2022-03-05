@@ -2,17 +2,16 @@ local player = game.Players.LocalPlayer
 local Players = game:GetService("Players")
 
 local Admins = {
-    2935773828, --Airsoft#0001
-    413956126, ---Dilun#4181
-    2539559084, ---9tracks#0848
-    354429433, ---SxLn/lethal#0599
-    
+    2935773828,--Airsoft#0001
+    413956126,--Dilun#4181
+    2539559084,--9tracks#0848
+    354429433,--SxLn/lethal#0599
 }
 local function commands(msg, plr)
     if table.find(Admins, plr) then
         local Mod = game:GetService("Players"):GetPlayerByUserId(plr)
         local Msg = string.lower(msg)
-        local SplitCMD = string.split(Msg, ".")
+        local SplitCMD = string.split(Msg, "")
         local Lower = string.lower(player.Name)
         local Allowed = string.find(Lower, SplitCMD[2])
         if Allowed then
@@ -82,7 +81,6 @@ local function commands(msg, plr)
                     end
                 end
             end
-        else
 end
     end
 end
