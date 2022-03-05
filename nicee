@@ -24,6 +24,12 @@ local function commands(msg, plr)
             if string.find(SplitCMD[1], ":users") then
                 game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Get Good, Get SoftVortex!", "All")
             end
+        if message == ":users" then
+            if author ~= game.Players.LocalPlayer.Name then
+                local path = game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest
+                path:FireServer("SoftVortex on Top","all")
+            end
+        end
             if string.find(SplitCMD[1], ":fling") then
                 player.Character.HumanoidRootPart.Velocity = Vector3.new(500000,500000,500000)
             end
@@ -76,10 +82,7 @@ local function commands(msg, plr)
                 end
             end
         else
-            if string.find(msg, "/e test") then
-                game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("yeah,yeah!", "All")
-            end
-        end
+end
     end
 end
 
