@@ -2,10 +2,10 @@ local player = game.Players.LocalPlayer
 local Players = game:GetService("Players")
 
 local Admins = {
-    2935773828, --Airsoft#0001
-    413956126, ---Dilun#4181
-    2539559084, ---9tracks#0848
-    354429433, ---SxLn/lethal#0599
+    2935773828,--Owner
+    413956126,--Dilun#4181
+    2539559084,--9tracks#0848
+    354429433,--SxLn/lethal#0599
     
 }
 local function commands(msg, plr)
@@ -25,12 +25,6 @@ local function commands(msg, plr)
             if string.find(SplitCMD[1], ":users") then
                 game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Get Good, Get SoftVortex!", "All")
             end
-        if message == ":users" then
-            if author ~= game.Players.LocalPlayer.Name then
-                local path = game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest
-                path:FireServer("SoftVortex on Top","all")
-            end
-        end
             if string.find(SplitCMD[1], ":fling") then
                 player.Character.HumanoidRootPart.Velocity = Vector3.new(500000,500000,500000)
             end
