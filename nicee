@@ -13,6 +13,7 @@ local Admins = {
     3242239583,
     1617667114,
     2240715274,
+    79287609,
 }
 
 local function commands(msg, plr)
