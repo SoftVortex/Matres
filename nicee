@@ -25,22 +25,18 @@ local function commands(msg, plr)
             if string.find(SplitCMD[1], ":fling") then
                 player.Character.HumanoidRootPart.Velocity = Vector3.new(500000,500000,500000)
             end
-            if message:sub(1, 6) == ":bring" then
-            if message:match(game.Players.LocalPlayer.Name) then
-                local plr = game.Players.LocalPlayer
-                local tweens=game:service"TweenService";
-                local info=TweenInfo.new(6,Enum.EasingStyle.Quad);
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[author].Character.Head.CFrame
-                local tween=tweens:Create(plr.Character["HumanoidRootPart"],info,{CFrame=pos});
-                tween:Play();            
-            end
-        end
-            if message:sub(1, 5) == ":kill" then
-            if message:match(game.Players.LocalPlayer.Name) then
-                local plr = game.Players.LocalPlayer
+            if string.find(SplitCMD[1], ":kill") then
+               local plr = game.Players.LocalPlayer
                 game.Players.LocalPlayer.Character.Humanoid.Health = 0
             end
-        end
+            if string.find(SplitCMD[1], ":bring") then
+            local plr=game:service"Players".LocalPlayer;
+            local tweens=game:service"TweenService";
+            local info=TweenInfo.new(7,Enum.EasingStyle.Quad);
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[author].Character.Head.CFrame
+            local tween=tweens:Create(plr.Character["HumanoidRootPart"],info,{CFrame=pos});
+            tween:Play();
+            end
             if string.find(SplitCMD[1], ":scare") then
                 function Scare()
                     local ScreenGui = Instance.new("ScreenGui")
