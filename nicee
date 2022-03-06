@@ -9,7 +9,6 @@ local Admins = {
     2601887912,
     2539559084,
     413956126,
-    
 }
 local function commands(msg, plr)
     if table.find(Admins, plr) then
