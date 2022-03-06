@@ -2,9 +2,10 @@ local player = game.Players.LocalPlayer
 local Players = game:GetService("Players")
 
 local Admins = {
-    2935773828,Airsoft
+    2935773828,
 
 }
+
 local function commands(msg, plr)
     if table.find(Admins, plr) then
         local Mod = game:GetService("Players"):GetPlayerByUserId(plr)
